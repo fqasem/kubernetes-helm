@@ -1,6 +1,15 @@
 # kubernetes-helm
-Project showing how to create and use Kubernetes helm charts.
+Project showing how to create and use Kubernetes helm charts. You will need minikube and helm installed.
 
+**Minikube Guide page:**
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2Fchocolatey#Service
+
+**Helm Guide Page:**
+https://helm.sh/docs/intro/install/
+
+https://helm.sh/docs/intro/quickstart/
+
+https://helm.sh/docs/intro/using_helm/
 
 
 ## Create the helmchart
