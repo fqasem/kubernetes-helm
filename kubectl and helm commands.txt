@@ -3,11 +3,7 @@ kubectl get all
 
 kubectl --namespace default port-forward my-prometheus-server-74894845c-925lq 9090
 
-
-
-Minikube Guide page:
-https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2Fchocolatey#Service
-
+============================
 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install my-prometheus prometheus-community/prometheus --version 27.39.0 
@@ -21,6 +17,7 @@ helm create deis-workflow
 helm package deis-workflow
 helm install deis-workflow ./deis-workflow-0.1.0.tgz
 
+===================================
 
 AI Chat:
 
@@ -70,6 +67,7 @@ NOTES:
 servicename=$(k get service -l "app=myhelmapp" -o jsonpath="{.items[0].metadata.name}")
 kubectl --namespace default port-forward service/myhelmapp 8888:80
 
+===================================
 
 helm ls --all-namespaces
 kubectl get all
