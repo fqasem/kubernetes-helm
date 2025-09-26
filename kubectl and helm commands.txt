@@ -1,0 +1,82 @@
+kubectl get po -A 
+kubectl get all
+
+kubectl --namespace default port-forward my-prometheus-server-74894845c-925lq 9090
+
+
+
+Minikube Guide page:
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2Fchocolatey#Service
+
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install my-prometheus prometheus-community/prometheus --version 27.39.0 
+
+helm ls --all-namespaces 
+helm status my-Prometheus
+helm install mywebapp-release webapp2/
+
+
+helm create deis-workflow
+helm package deis-workflow
+helm install deis-workflow ./deis-workflow-0.1.0.tgz
+
+
+AI Chat:
+
+write one line powershell equivalent of the command export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=deis-workflow,app.kubernetes.io/instance=deis-workflow" -o jsonpath="{.items[0].metadata.name}")
+
+$env:POD_NAME = (kubectl get pods --namespace default -l 'app.kubernetes.io/name=deis-workflow,app.kubernetes.io/instance=deis-workflow' -o jsonpath='{.items[*].metadata.name}' | ForEach-Object { $_ -split '\s+' } | Where-Object { $_ } | Select-Object -First 1)
+
+
+
+write one line powershell equivalent of the command export CONTAINER_PORT=$(kubectl get pod --namespace default $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
+
+
+$env:CONTAINER_PORT = (kubectl get pod --namespace default $env:POD_NAME -o jsonpath='{.spec.containers[*].ports[*].containerPort}' | ForEach-Object { $_ -split '\s+' } | Where-Object { $_ } | Select-Object -First 1)
+
+
+
+kubectl --namespace default port-forward $env:POD_NAME $env:CONTAINER_PORT
+
+
+========================
+
+PS C:\Users\farra\Projects\git_projects\kubernetes-helm\solution> helm install my-webapp .\webapp1\                  
+NAME: my-webapp
+LAST DEPLOYED: Fri Sep 26 15:08:09 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+servicename=$(k get service -l "app=myhelmapp" -o jsonpath="{.items[0].metadata.name}")
+kubectl --namespace default port-forward service/myhelmapp 8888:80
+
+=================================
+
+After updating Values.yaml file:
+
+
+PS C:\Users\farra\Projects\git_projects\kubernetes-helm> helm upgrade my-webapp .\solution\webapp1\ --values .\solution\webapp1\values.yaml
+Release "my-webapp" has been upgraded. Happy Helming!
+NAME: my-webapp
+LAST DEPLOYED: Fri Sep 26 15:29:42 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 2
+TEST SUITE: None
+NOTES:
+servicename=$(k get service -l "app=myhelmapp" -o jsonpath="{.items[0].metadata.name}")
+kubectl --namespace default port-forward service/myhelmapp 8888:80
+
+
+helm ls --all-namespaces
+kubectl get all
+kubectl get pods
+kubectl get all -n dev
+kubectl get all -n prod
+
+
+
+
