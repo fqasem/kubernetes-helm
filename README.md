@@ -1,6 +1,10 @@
 # kubernetes-helm
 Project showing how to create and use Kubernetes helm charts. You will need minikube and helm installed.
 
+Helm (https://helm.sh/) has become the de facto standard for packaging and distributing applications for kubernetes.
+
+![helm-diagram.png](readme-assets/helm-diagram.png)
+
 ### Minikube Guide page: ###
 https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2Fchocolatey#Service
 
